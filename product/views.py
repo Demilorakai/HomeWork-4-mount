@@ -1,16 +1,26 @@
-from django.shortcuts import render, HttpResponse
-from .models import Product
+from django.shortcuts import render
+from .models import Product, Categories
+
 
 # Create your views here.
 
-
 def homepage(request):
-    products = Product.objects.all()
-    context = {"all_vegetables": products}
+    products = Product.objects.all()  # list
+    context = {"all product": products}
     return render(request, "product_list.html", context)
 
 
-def navar(request):
-    tovary_object = Product.objects.get(id=1)
-    description = tovary_object.description
-    return HttpResponse(description, request)
+def Category(request):
+    categories = Categories.objects.all()
+    context = {"categories": categories}
+    return render(request, "categories.html", context)
+
+
+def categories_info(request, id):
+    category = Categories.objects.get(id=id)
+    context = {"category": category}
+    return render(request, "category_info.html", context)
+
+
+def Check(request):
+    return render(request, "index.html")
