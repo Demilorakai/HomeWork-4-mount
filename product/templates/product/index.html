@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+   <body class="head">
+    <h1 class="text_strong">Pricing Table</h1>
+   <p class="text">Lorem ipsum dolor sit amet, consectetur adipicing <br>
+     elit. Nunc quam urna dignissim nec auctor in,<br>
+    mattis vitae leo.</p>
+<div class="row">
+    {% for pri in object_list %}
+    <div class="col_left" style="width: 18rem;">
+    <div class="card-body">
+    <h4 class="card-title"><a>{{ pri.name }}</a></h4>
+      <hr>
+    <p class="card-text-1">{{ pri.description }}</p>
+    <b class="card-strong-text">Full Support :</b>
+      <p class="card-text">{{ pri.full_support }}</p>
+      <b class="card-strong-text">Duration : </b>
+      <p class="card-text">{{ pri.duration }} Days</p>
+      <b class="card-strong-text">Storage :</b>
+      <p class="card-text">{{ pri.storage }}GB</p>
+      <h3 class="card-title-1">{{ pri.price }}$</h3>
+    <button type="button" class="btn btn-outline-primary" style="width: 14rem">Buy new</button>
+  </div>
+</div>
+    {% endfor %}
+</div>
+</body>
+{% endblock %}

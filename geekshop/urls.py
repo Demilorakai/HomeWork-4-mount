@@ -1,4 +1,4 @@
-"""foodshop URL Configuration
+"""geekshop URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -16,12 +16,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from product.views import homepage, Category, Check, categories_info
+from product.views import homepage, category, categories_info, register, PricingListView, PricingDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage),
-    path('categories/', Category),
-    path('Buy/', Check()),
-    path('categories/<id>', categories_info)
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('category/', category, name="category"),
+    path('categories/<id>/', categories_info),
+    path('buy/', PricingListView.as_view(), name='buy'),
+    path('registration/', register, name="register"),
+    path('buy/<pk>/', PricingDetailView.as_view())
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

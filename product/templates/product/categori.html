@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<body class="fon">
+      <h1 class="title">Список категорий</h1>
+      <hr>
+      <div class="row">
+      {% for sun in categories %}
+          <div class="col-3 category">
+          <h3 ><a class="cat" href="/categories/{{ sun.id }}">{{ sun.name }}</a></h3>
+          </div>
+      {% endfor %}
+      </div>
+</body>
+{% endblock %}
